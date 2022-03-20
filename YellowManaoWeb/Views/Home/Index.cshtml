@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Yellow Manao</h1>
+    <p>Learn and code together.</p>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="mb-3">
+            <label for="yourNameInput" class="form-label">Enter your name :</label>
+            <input type="text" class="form-control" id="yourNameInput" placeholder="Please enter your name">
+        </div>
+        <button id="ClearButton" type="button" class="btn btn-secondary">Clear</button>
+        <button id="SendButton" type="button" class="btn btn-success">Send</button>
+    </div>
+    <div class="col-6">
+        <div id="WelcomeTextDisplay"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $('#SendButton').click(function(){
+                var name = $('#yourNameInput').val();
+                if(name.length > 0) {
+                    var displayText = "Hello, " + name + ". Nice to meet you.";
+                    $('#WelcomeTextDisplay').html(displayText);
+                    $('#yourNameInput').val('');
+                }
+                else {
+                    alert('Please enter your name!');                
+                }
+            });
+
+            $('#ClearButton').click(function(){
+                $('#yourNameInput').val(''); 
+                $('#WelcomeTextDisplay').empty();
+            });
+        });
+    
+    </script>
+}
